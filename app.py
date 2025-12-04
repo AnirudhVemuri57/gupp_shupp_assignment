@@ -15,7 +15,7 @@ CORS(app)
 
 @app.route("/")
 def home():
-    return render_template("test.html")
+    return send_file("test.html")
 
 
 
