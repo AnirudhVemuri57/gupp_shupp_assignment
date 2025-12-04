@@ -1,3 +1,6 @@
+## app is live at 
+https://gupp-shupp-assignment.onrender.com/
+
 
 1. Install Python 3.8+
 2. (Optional) Create a venv:
