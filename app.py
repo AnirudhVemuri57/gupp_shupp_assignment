@@ -11,6 +11,8 @@ from memory_extractor import extract_memories
 from personality_engine import rewrite
 
 app = Flask(__name__)
+from flask_cors import CORS
+CORS(app)
 
 @app.route("/extract_memory", methods=["POST"])
 def extract_memory_route():
