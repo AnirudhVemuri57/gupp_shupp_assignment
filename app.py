@@ -12,17 +12,13 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-# -------------------------------
-# Root UI Route (renders test.html)
-# -------------------------------
+
 @app.route("/")
 def home():
     return render_template("test.html")
 
 
-# -------------------------------
-# API: Extract Memories
-# -------------------------------
+
 @app.route("/extract_memory", methods=["POST"])
 def extract_memory_route():
     data = request.get_json() or {}
@@ -31,9 +27,7 @@ def extract_memory_route():
     return jsonify({"memories": mems})
 
 
-# -------------------------------
-# API: Tone-Based Reply Rewriter
-# -------------------------------
+
 @app.route("/reply", methods=["POST"])
 def reply_route():
     data = request.get_json() or {}
@@ -44,8 +38,6 @@ def reply_route():
     return jsonify({"rewritten": out})
 
 
-# -------------------------------
-# Run App
-# -------------------------------
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
