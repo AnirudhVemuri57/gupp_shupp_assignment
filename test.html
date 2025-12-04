@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Tester</title>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+  <h2>Test /reply API</h2>
+
+  <label>Reply Text:</label><br>
+  <textarea id="reply" rows="4" cols="50">I am stressed about exams</textarea><br><br>
+
+  <label>Select Tone:</label>
+  <select id="tone">
+    <option value="mentor">mentor</option>
+    <option value="witty">witty</option>
+    <option value="therapist">therapist</option>
+  </select>
+  <br><br>
+
+  <button onclick="sendRequest()">Send</button>
+
+  <h3>Output:</h3>
+  <pre id="output" style="background:#f5f5f5; padding:15px;"></pre>
+
+<script>
+function sendRequest() {
+  const reply = document.getElementById("reply").value;
+  const tone = document.getElementById("tone").value;
+
+  fetch("https://gupp-shupp-assignment.onrender.com/reply", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ reply: reply, tone: tone })
+  })
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+  })
+  .catch(err => {
+    document.getElementById("output").textContent = "Error: " + err;
+  });
+}
+</script>
+
+</body>
+</html>
