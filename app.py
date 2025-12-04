@@ -4,7 +4,7 @@ Flask app that serves the UI at '/' and exposes two APIs:
 - POST /reply
 """
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, send_file
 from memory_extractor import extract_memories
 from personality_engine import rewrite
 from flask_cors import CORS
